@@ -1,6 +1,7 @@
 package hello.core.order;
 
 import hello.core.discount.DiscountPolicy;
+import hello.core.discount.FixDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,6 @@ public class OrderServiceImpl implements OrderService {
   private final DiscountPolicy discountPolicy;
 
   // 생성자가 하나 일경우에는 Autowired 를 생략해도 됨
-//  @Autowired
 //  public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
 //    System.out.println("memberRepository = " + memberRepository);
 //    System.out.println("discountPolicy = " + discountPolicy);
