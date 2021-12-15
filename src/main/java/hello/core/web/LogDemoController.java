@@ -9,23 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequiredArgsConstructor
 public class LogDemoController {
 
   private final LogDemoService logDemoService;
-  private final ObjectProvider<MyLogger> myLoggerObjectProvider;
-
-  public LogDemoController(LogDemoService logDemoService,
-      ObjectProvider<MyLogger> myLoggerObjectProvider) {
-    this.logDemoService = logDemoService;
-    this.myLoggerObjectProvider = myLoggerObjectProvider;
-  }
-
+  private final MyLogger myLogger;
 
   @RequestMapping("log-demo")
   @ResponseBody
   public String logDemo(HttpServletRequest request) {
-    MyLogger myLogger = myLoggerObjectProvider.getObject();
-    System.out.println(myLogger + "mylogger print controller");
+    System.out.println("mylogger = " + myLogger.getClass());
     String requestURL = request.getRequestURL().toString();
     myLogger.setRequestURL(requestURL);
 
